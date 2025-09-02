@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Brew Haven - Home</title>
+  <meta name="description" content="Brew Haven: warm, friendly specialty coffee shop. Explore our menu, learn our story, and order online." />
+  <!-- fonts: 'Playfair Display' for headings, 'Inter' for body text -->
+  <!-- font-preload: 'Playfair Display', 'Inter' -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Ensure body uses a smooth default font for body text when fonts aren't loaded yet */
+    body { font-family: 'Inter', ui-sans-serif, system-ui; }
+  </style>
+</head>
+<body class="opacity-0 transition-opacity duration-1000 ease-in-out" style="min-height:100vh; background-color:#f8f4ee;">
+  <!-- Header / Navbar -->
+  <header class="w-full fixed top-0 left-0 z-50 bg-white/70 backdrop-blur-lg shadow-md">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <a href="./index.html" class="flex items-center space-x-2 text-slate-800 font-semibold text-xl">
+          <!-- Coffee cup icon -->
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-amber-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M3 3h9a4 4 0 0 1 4 4v3" />
+            <path d="M7 3v6" />
+            <path d="M3 11h13" />
+            <path d="M8 21h9" />
+            <path d="M3 7h6" />
+          </svg>
+          <span>Brew Haven</span>
+        </a>
+        <nav class="hidden md:flex space-x-6 text-slate-700" aria-label="Main Navigation">
+          <a href="./index.html" class="hover:underline">Home</a>
+          <a href="./menu.html" class="hover:underline">Menu</a>
+          <a href="./about.html" class="hover:underline">About</a>
+          <a href="./contact.html" class="hover:underline">Contact</a>
+          <a href="./cart.html" class="hover:underline">Cart</a>
+        </nav>
+        <button id="mobile-menu-button" class="md:hidden p-2 rounded-md bg-amber-100 hover:bg-amber-200 transition-all duration-300">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-white/95 shadow-lg">
+      <a href="./index.html" class="block px-4 py-2 border-t border-gray-200">Home</a>
+      <a href="./menu.html" class="block px-4 py-2 border-t border-gray-200">Menu</a>
+      <a href="./about.html" class="block px-4 py-2 border-t border-gray-200">About</a>
+      <a href="./contact.html" class="block px-4 py-2 border-t border-gray-200">Contact</a>
+      <a href="./cart.html" class="block px-4 py-2 border-t border-gray-200">Cart</a>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section aria-label="Hero" class="w-full h-screen bg-cover bg-center flex items-center" style="background-image: url('https://images.unsplash.com/photo-1597517681705-00cf0b7a27a8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3ODkyNDZ8MHwxfHNlYXJjaHw4fHxBJTIwY296eSUyMEJyZXclMjBIYXZlbiUyMGNhZmUlMjBpbnRlcmlvciUyMHdpdGglMjB3YXJtJTIwbGlnaHRpbmclMjBhbmQlMjB3b29kZW4lMjBkZWNvcnxlbnwwfDB8fHwxNzU2ODIwODg0fDA&ixlib=rb-4.1.0&q=80&w=1080');">
+    <div class="bg-white/60 backdrop-blur-md p-6 rounded-lg mx-4 md:mx-0 max-w-3xl mx-auto text-center animate-on-scroll" style="font-family: 'Playfair Display', serif;">
+      <h1 class="text-4xl md:text-6xl font-bold mb-4 text-slate-900">Brew Haven</h1>
+      <p class="text-lg md:text-xl mb-6">Where every cup tells a warm story. Handcrafted coffee, cozy vibes, and friendly service.</p>
+      <a href="./menu.html" class="inline-block px-6 py-3 rounded-full bg-gradient-to-r from-amber-500 to-orange-600 text-white font-semibold shadow-md hover:shadow-lg transition-all duration-300">Explore Menu</a>
+    </div>
+  </section>
+
+  <main class="w-full" style="font-family: 'Inter', sans-serif;">
+    <section class="py-16 px-6 md:px-12 max-w-7xl mx-auto" aria-label="Intro" class="animate-on-scroll opacity-0" style="opacity:0;">
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-white rounded-xl p-6 shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
+          <h3 class="font-semibold text-xl mb-2" style="font-family: 'Playfair Display', serif;">Cozy Atmosphere</h3>
+          <p class="text-slate-700">A welcoming space to relax, work, or catch up with friends.</p>
+        </div>
+        <div class="bg-white rounded-xl p-6 shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
+          <h3 class="font-semibold text-xl mb-2" style="font-family: 'Playfair Display', serif;">Artisan Coffee</h3>
+          <p class="text-slate-700">Small-batch beans roasted to unlock balanced, vibrant flavors.</p>
+        </div>
+        <div class="bg-white rounded-xl p-6 shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
+          <h3 class="font-semibold text-xl mb-2" style="font-family: 'Playfair Display', serif;">Thoughtful Service</h3>
+          <p class="text-slate-700">Friendly staff and a cafe that feels like a second home.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-12 px-6 md:px-12 animate-on-scroll" style="opacity:0;">
+      <div class="max-w-3xl mx-auto text-center">
+        <h2 class="text-2xl md:text-3xl font-semibold mb-4" style="font-family: 'Playfair Display', serif;">What customers say</h2>
+        <p class="text-slate-700 mb-8">A few kind words from our neighbors in Hyderabad and beyond.</p>
+      </div>
+      <div class="grid md:grid-cols-3 gap-6">
+        <blockquote class="bg-white p-6 rounded-lg shadow-md animate-on-scroll" style="opacity:0;">
+          <p class="mb-2">“The moment I step in, the aroma of coffee and warm chatter welcomes me.”</p>
+          <footer class="text-sm text-slate-500">- Priya S.</footer>
+        </blockquote>
+        <blockquote class="bg-white p-6 rounded-lg shadow-md animate-on-scroll" style="opacity:0;">
+          <p class="mb-2">“Their latte art is a thing of beauty, and the beans are always flawless.”</p>
+          <footer class="text-sm text-slate-500">- Arjun K.</footer>
+        </blockquote>
+        <blockquote class="bg-white p-6 rounded-lg shadow-md animate-on-scroll" style="opacity:0;">
+          <p class="mb-2">“A perfect spot to unwind with friends and a perfect cup to match.”</p>
+          <footer class="text-sm text-slate-500">- Neha R.</footer>
+        </blockquote>
+      </div>
+    </section>
+  </main>
+
+  <footer class="w-full bg-slate-900 text-white py-8 mt-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-sm flex flex-col md:flex-row justify-between items-center gap-2">
+      <span>© 2025 Brew Haven</span>
+      <span class="opacity-70">Designed with warmth and care</span>
+    </div>
+  </footer>
+
+  <!-- Scripts: cart, animations, and page load fade-in -->
+  <script>
+    // Simple mobile menu toggle
+    const btn = document.getElementById('mobile-menu-button');
+    const menu = document.getElementById('mobile-menu');
+    if (btn && menu) {
+      btn.addEventListener('click', () => {
+        menu.classList.toggle('hidden');
+      });
+    }
+
+    // Scroll animation: add opacity when in view
+    const animatedElements = document.querySelectorAll('.animate-on-scroll');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('opacity-100');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    animatedElements.forEach(el => {
+      el.classList.add('transition-opacity', 'duration-1000', 'ease-in-out');
+      el.style.opacity = '0';
+      observer.observe(el);
+    });
+
+    // Page load fade-in
+    window.addEventListener('load', () => document.body.classList.remove('opacity-0'));
+
+    // Simple cart shared across pages
+    const CART_KEY = 'brewhaven_cart'
+    function loadCart() {
+      const raw = localStorage.getItem(CART_KEY);
+      try { return raw ? JSON.parse(raw) : []; } catch { return []; }
+    }
+    function saveCart(cart) {
+      localStorage.setItem(CART_KEY, JSON.stringify(cart));
+    }
+    function addToCart(item) {
+      const cart = loadCart();
+      const found = cart.find(i => i.id === item.id);
+      if (found) found.qty += 1; else cart.push({ ...item, qty: 1 });
+      saveCart(cart);
+      alert('Added to cart: ' + item.name);
+    }
+  </script>
+  <!-- End of body -->
+  <script>window.addEventListener('load', () => document.body.classList.remove('opacity-0'));</script>
+</body>
+</html>
