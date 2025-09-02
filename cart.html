@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Brew Haven - Cart & Checkout</title>
+  <meta name="description" content="Review your cart, adjust quantities, and checkout with PayPal Sandbox." />
+  <!-- fonts placeholder -->
+  <!-- font-preload: 'Playfair Display', 'Inter' -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- PayPal SDK (Sandbox) -->
+  <script src="https://www.paypal.com/sdk/js?client-id=YOUR_PAYPAL_SANDBOX_CLIENT_ID&currency=INR"></script>
+</head>
+<body class="opacity-0 transition-opacity duration-1000 ease-in-out" style="font-family: 'Inter', sans-serif;">
+  <header class="w-full fixed top-0 left-0 z-50 bg-white/70 backdrop-blur-lg shadow-md">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <a href="./index.html" class="flex items-center space-x-2 text-slate-800 font-semibold text-xl">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-amber-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h9a4 4 0 0 1 4 4v3" /><path d="M7 3v6" /><path d="M3 11h13" /><path d="M8 21h9" /><path d="M3 7h6"/></svg>
+          Brew Haven
+        </a>
+        <nav class="hidden md:flex space-x-6 text-slate-700" aria-label="Main Navigation">
+          <a href="./index.html" class="hover:underline">Home</a>
+          <a href="./menu.html" class="hover:underline">Menu</a>
+          <a href="./about.html" class="hover:underline">About</a>
+          <a href="./contact.html" class="hover:underline">Contact</a>
+          <a href="./cart.html" class="hover:underline">Cart</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="pt-28 px-6 md:px-12 max-w-7xl mx-auto" style="font-family: 'Inter', sans-serif;">
+    <section aria-label="Cart" class="animate-on-scroll" style="opacity:0;">
+      <h1 class="text-3xl md:text-4xl font-semibold mb-4" style="font-family: 'Playfair Display', serif;">Your Cart</h1>
+      <div id="cart-items" class="grid md:grid-cols-2 gap-4"></div>
+      <div class="mt-6 flex items-center justify-between">
+        <div class="text-sm text-slate-700">Subtotal: ₹<span id="cart-subtotal">0</span></div>
+        <button id="clear-cart" class="px-4 py-2 rounded bg-slate-200 hover:bg-slate-300 transition">Clear</button>
+      </div>
+    </section>
+    <section class="mt-6 animate-on-scroll" style="opacity:0;">
+      <h2 class="text-2xl font-semibold mb-3" style="font-family: 'Playfair Display', serif;">Checkout with PayPal</h2>
+      <div id="paypal-button-container" class="w-full"></div>
+    </section>
+  </main>
+
+  <footer class="w-full bg-slate-900 text-white py-6 mt-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-sm">© 2025 Brew Haven</div>
+  </footer>
+
+  <script>
+    // Page load fade-in
+    window.addEventListener('load', () => document.body.classList.remove('opacity-0'));
+
+    // Cart utilities
+    const CART_KEY = 'brewhaven_cart'
+    function loadCart() {
+      const raw = localStorage.getItem(CART_KEY)
+      try { return raw ? JSON.parse(raw) : [] } catch { return [] }
+    }
+    function saveCart(cart) { localStorage.setItem(CART_KEY, JSON.stringify(cart)); }
+    function formatPrice(n) { return '₹' + Number(n).toFixed(0) }
+
+    function renderCart() {
+      const items = loadCart();
+      const container = document.getElementById('cart-items');
+      const subtotalEl = document.getElementById('cart-subtotal');
+      container.innerHTML = '';
+      let subtotal = 0;
+      if (items.length === 0) {
+        container.innerHTML = '<p class="text-slate-700">Your cart is empty. Add some delicious brews!</p>';
+      } else {
+        items.forEach(it => {
+          const row = document.createElement('div');
+          row.className = 'bg-white rounded-xl p-4 shadow-md flex items-center justify-between';
+          row.innerHTML = `
+            <div>
+              <div class="font-semibold">${it.name}</div>
+              <div class="text-sm text-slate-600">₹${it.price} each</div>
+            </div>
+            <div class="flex items-center gap-2">
+              <button class="qty-decrease px-2 py-1 rounded bg-gray-100" data-id="${it.id}">-</button>
+              <span class="qty">${it.qty}</span>
+              <button class="qty-increase px-2 py-1 rounded bg-gray-100" data-id="${it.id}">+</button>
+              <button class="remove-item ml-2 px-3 py-1 rounded bg-red-100 text-red-700" data-id="${it.id}">Remove</button>
+            </div>`;
+          container.appendChild(row);
+          subtotal += it.price * it.qty;
+        });
+      }
+      subtotalEl.textContent = subtotal.toFixed(0);
+      // Bind events
+      container.querySelectorAll('.qty-decrease').forEach(btn => btn.addEventListener('click', () => updateQty(btn.dataset.id, -1)));
+      container.querySelectorAll('.qty-increase').forEach(btn => btn.addEventListener('click', () => updateQty(btn.dataset.id, 1)));
+      container.querySelectorAll('.remove-item').forEach(btn => btn.addEventListener('click', () => removeItem(btn.dataset.id)));
+    }
+    function updateQty(id, delta) {
+      const cart = loadCart();
+      const item = cart.find(i => i.id === id);
+      if (!item) return;
+      item.qty = Math.max(1, item.qty + delta);
+      saveCart(cart);
+      renderCart();
+    }
+    function removeItem(id) {
+      let cart = loadCart();
+      cart = cart.filter(i => i.id !== id);
+      saveCart(cart);
+      renderCart();
+    }
+    document.getElementById('clear-cart')?.addEventListener('click', () => { localStorage.removeItem(CART_KEY); renderCart(); } );
+
+    // PayPal button render
+    function renderPayPal() {
+      const container = document.getElementById('paypal-button-container');
+      // Calculate total from cart
+      const cart = loadCart();
+      const total = cart.reduce((sum, i) => sum + (Number(i.price) * Number(i.qty)), 0);
+      if (total <= 0) {
+        container.innerHTML = '<p class="text-slate-700">Add items to cart to checkout.</p>';
+        return;
+      }
+      // Render PayPal button with placeholder client-id
+      container.innerHTML = '';
+      // @ts-ignore
+      paypal.Buttons({
+        style: { layout: 'vertical', color: 'gold', shape: 'rect', label: 'paypal' },
+        createOrder: function(data, actions) {
+          return actions.order.create({
+            purchase_units: [{ amount: { value: total.toFixed(0), currency_code: 'INR' } }],
+            shipping: { address: { address_line_1: 'Hyderabad, India', admin_area_2: 'Hyderabad', admin_area_1: 'Telangana', postal_code: '500001', country_code: 'IN' } }
+          });
+        },
+        onApprove: function(data, actions) {
+          return actions.order.capture().then(function(details) {
+            alert('Payment completed by ' + details.payer.name.given_name + '. Thanks!');
+            localStorage.removeItem(CART_KEY);
+            renderCart();
+          });
+        },
+        onError: function(err) { alert('PayPal checkout failed. ' + err); }
+      }).render('#paypal-button-container');
+    }
+
+    // Init on load
+    window.addEventListener('load', () => {
+      renderCart();
+      renderPayPal();
+      document.querySelectorAll('.animate-on-scroll')?.forEach(el => el.classList.add('opacity-100'));
+    });
+  </script>
+
+  <script>window.addEventListener('load', () => document.body.classList.remove('opacity-0'));</script>
+</body>
+</html>
