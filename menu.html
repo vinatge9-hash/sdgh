@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Brew Haven - Menu</title>
+  <meta name="description" content="Discover Brew Haven's coffee menu and pastries. Add items to your cart for online ordering." />
+  <!-- fonts placeholder -->
+  <!-- font-preload: 'Playfair Display', 'Inter' -->
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="opacity-0 transition-opacity duration-1000 ease-in-out" style="font-family: 'Inter', sans-serif;">
+  <header class="w-full fixed top-0 left-0 z-50 bg-white/70 backdrop-blur-lg shadow-md">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <a href="./index.html" class="flex items-center space-x-2 text-slate-800 font-semibold text-xl">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-amber-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h9a4 4 0 0 1 4 4v3" /><path d="M7 3v6" /><path d="M3 11h13" /><path d="M8 21h9" /><path d="M3 7h6"/></svg>
+          Brew Haven
+        </a>
+        <nav class="hidden md:flex space-x-6 text-slate-700" aria-label="Main Navigation">
+          <a href="./index.html" class="hover:underline">Home</a>
+          <a href="./menu.html" class="hover:underline">Menu</a>
+          <a href="./about.html" class="hover:underline">About</a>
+          <a href="./contact.html" class="hover:underline">Contact</a>
+          <a href="./cart.html" class="hover:underline">Cart</a>
+        </nav>
+        <button id="mobile-menu-button" class="md:hidden p-2 rounded-md bg-amber-100 hover:bg-amber-200 transition-all duration-300">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden bg-white/95 shadow-lg">
+      <a href="./index.html" class="block px-4 py-2 border-t border-gray-200">Home</a>
+      <a href="./menu.html" class="block px-4 py-2 border-t border-gray-200">Menu</a>
+      <a href="./about.html" class="block px-4 py-2 border-t border-gray-200">About</a>
+      <a href="./contact.html" class="block px-4 py-2 border-t border-gray-200">Contact</a>
+      <a href="./cart.html" class="block px-4 py-2 border-t border-gray-200">Cart</a>
+    </div>
+  </header>
+
+  <main class="pt-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" style="font-family: 'Inter', sans-serif;">
+    <section aria-label="Menu" class="py-8">
+      <h1 class="text-3xl font-semibold mb-6" style="font-family: 'Playfair Display', serif;">Our Location & Menu</h1>
+      <p class="text-slate-700 mb-6">Choose from a curated list of coffees and pastries. Add items to your cart to checkout later on the cart page.</p>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Coffee items (5) -->
+        <div class="bg-white rounded-xl p-5 shadow-md hover:shadow-lg transition-all duration-300">
+          <h3 class="font-semibold mb-1" style="font-family: 'Playfair Display', serif;">Espresso</h3>
+          <p class="text-sm text-slate-600 mb-2">Concentrated, bold shot with a rich aroma.</p>
+          <div class="flex items-center justify-between mb-2">
+            <span class="font-semibold">₹120</span>
+            <button class="add-to-cart px-4 py-2 rounded-full bg-gradient-to-r from-amber-500 to-orange-600 text-white font-semibold hover:shadow-lg transition-all duration-300" data-id="espresso" data-name="Espresso" data-price="120" data-desc="Concentrated, bold shot with a rich aroma.">Add to Cart</button>
+          </div>
+        </div>
+        <div class="bg-white rounded-xl p-5 shadow-md hover:shadow-lg transition-all duration-300">
+          <h3 class="font-semibold mb-1" style="font-family: 'Playfair Display', serif;">Americano</h3>
+          <p class="text-sm text-slate-600 mb-2">Espresso diluted with hot water for a smooth finish.</p>
+          <div class="flex items-center justify-between mb-2">
+            <span class="font-semibold">₹140</span>
+            <button class="add-to-cart px-4 py-2 rounded-full bg-gradient-to-r from-amber-500 to-orange-600 text-white font-semibold hover:shadow-lg transition-all duration-300" data-id="americano" data-name="Americano" data-price="140" data-desc="Espresso diluted with hot water for a smooth finish.">Add to Cart</button>
+          </div>
+        </div>
+        <div class="bg-white rounded-xl p-5 shadow-md hover:shadow-lg transition-all duration-300">
+          <h3 class="font-semibold mb-1" style="font-family: 'Playfair Display', serif;">Latte</h3>
+          <p class="text-sm text-slate-600 mb-2">Espresso with steamed milk and a touch of foam.</p>
+          <div class="flex items-center justify-between mb-2">
+            <span class="font-semibold">₹170</span>
+            <button class="add-to-cart px-4 py-2 rounded-full bg-gradient-to-r from-amber-500 to-orange-600 text-white font-semibold hover:shadow-lg transition-all duration-300" data-id="latte" data-name="Latte" data-price="170" data-desc="Espresso with steamed milk and a touch of foam.">Add to Cart</button>
+          </div>
+        </div>
+        <div class="bg-white rounded-xl p-5 shadow-md hover:shadow-lg transition-all duration-300">
+          <h3 class="font-semibold mb-1" style="font-family: 'Playfair Display', serif;">Cappuccino</h3>
+          <p class="text-sm text-slate-600 mb-2">Foamy delight with a balanced espresso base.</p>
+          <div class="flex items-center justify-between mb-2">
+            <span class="font-semibold">₹180</span>
+            <button class="add-to-cart px-4 py-2 rounded-full bg-gradient-to-r from-amber-500 to-orange-600 text-white font-semibold hover:shadow-lg transition-all duration-300" data-id="cappuccino" data-name="Cappuccino" data-price="180" data-desc="Foamy delight with a balanced espresso base.">Add to Cart</button>
+          </div>
+        </div>
+        <div class="bg-white rounded-xl p-5 shadow-md hover:shadow-lg transition-all duration-300">
+          <h3 class="font-semibold mb-1" style="font-family: 'Playfair Display', serif;">Flat White</h3>
+          <p class="text-sm text-slate-600 mb-2">Silky textured milk with a bold coffee backbone.</p>
+          <div class="flex items-center justify-between mb-2">
+            <span class="font-semibold">₹160</span>
+            <button class="add-to-cart px-4 py-2 rounded-full bg-gradient-to-r from-amber-500 to-orange-600 text-white font-semibold hover:shadow-lg transition-all duration-300" data-id="flatwhite" data-name="Flat White" data-price="160" data-desc="Silky textured milk with a bold coffee backbone.">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section aria-label="Pastries" class="py-8">
+      <h2 class="text-2xl font-semibold mb-4" style="font-family: 'Playfair Display', serif;">Pastries</h2>
+      <div class="grid md:grid-cols-3 lg:grid-cols-3 gap-6">
+        <div class="bg-white rounded-xl p-5 shadow-md hover:shadow-lg transition-all duration-300" aria-label="Croissant">
+          <h3 class="font-semibold mb-1" style="font-family: 'Playfair Display', serif;">Croissant</h3>
+          <p class="text-sm text-slate-600 mb-2">Buttery and flaky perfection.</p>
+          <div class="flex items-center justify-between mb-2">
+            <span class="font-semibold">₹90</span>
+            <button class="add-to-cart px-4 py-2 rounded-full bg-gradient-to-r from-amber-500 to-orange-600 text-white font-semibold hover:shadow-lg transition-all duration-300" data-id="croissant" data-name="Croissant" data-price="90" data-desc="Buttery and flaky perfection.">Add to Cart</button>
+          </div>
+        </div>
+        <div class="bg-white rounded-xl p-5 shadow-md hover:shadow-lg transition-all duration-300" aria-label="Blueberry Muffin">
+          <h3 class="font-semibold mb-1" style="font-family: 'Playfair Display', serif;">Blueberry Muffin</h3>
+          <p class="text-sm text-slate-600 mb-2">Juicy blueberries baked to tenderness.</p>
+          <div class="flex items-center justify-between mb-2">
+            <span class="font-semibold">₹110</span>
+            <button class="add-to-cart px-4 py-2 rounded-full bg-gradient-to-r from-amber-500 to-orange-600 text-white font-semibold hover:shadow-lg transition-all duration-300" data-id="blueberry_muffin" data-name="Blueberry Muffin" data-price="110" data-desc="Juicy blueberries baked to tenderness.">Add to Cart</button>
+          </div>
+        </div>
+        <div class="bg-white rounded-xl p-5 shadow-md hover:shadow-lg transition-all duration-300" aria-label="Chocolate Scone">
+          <h3 class="font-semibold mb-1" style="font-family: 'Playfair Display', serif;">Chocolate Scone</h3>
+          <p class="text-sm text-slate-600 mb-2">Rich and fudgy with a crumbly finish.</p>
+          <div class="flex items-center justify-between mb-2">
+            <span class="font-semibold">₹100</span>
+            <button class="add-to-cart px-4 py-2 rounded-full bg-gradient-to-r from-amber-500 to-orange-600 text-white font-semibold hover:shadow-lg transition-all duration-300" data-id="choc_scone" data-name="Chocolate Scone" data-price="100" data-desc="Rich and fudgy with a crumbly finish.">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="w-full bg-slate-900 text-white py-6 mt-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-sm flex flex-col md:flex-row justify-between items-center gap-2">
+      <span>© 2025 Brew Haven</span>
+      <span>Designed with warmth and care</span>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu toggle
+    const btn = document.getElementById('mobile-menu-button');
+    const menu = document.getElementById('mobile-menu');
+    if (btn && menu) { btn.addEventListener('click', () => menu.classList.toggle('hidden')); }
+
+    // Scroll animations
+    const animatedElements = document.querySelectorAll('.animate-on-scroll');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) { entry.target.style.opacity = '1'; observer.unobserve(entry.target); }
+      });
+    }, { threshold: 0.1 });
+    animatedElements.forEach(el => { el.style.opacity = '0'; el.classList.add('transition-opacity','duration-1000','ease-in-out'); observer.observe(el); });
+
+    // Page load fade-in
+    window.addEventListener('load', () => document.body.classList.remove('opacity-0'));
+
+    // Cart logic (shared across pages)
+    const CART_KEY = 'brewhaven_cart'
+    function loadCart() {
+      const raw = localStorage.getItem(CART_KEY);
+      try { return raw ? JSON.parse(raw) : []; } catch { return []; }
+    }
+    function saveCart(cart) { localStorage.setItem(CART_KEY, JSON.stringify(cart)); }
+    function addToCartFromMenu(item) {
+      const cart = loadCart();
+      const found = cart.find(i => i.id === item.id);
+      if (found) found.qty += 1; else cart.push({ id: item.id, name: item.name, price: Number(item.price), qty: 1 });
+      saveCart(cart);
+      alert(item.name + ' added to cart');
+    }
+
+    // Bind Add to Cart buttons
+    document.querySelectorAll('.add-to-cart').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = {
+          id: btn.dataset.id,
+          name: btn.dataset.name,
+          price: btn.dataset.price,
+          desc: btn.dataset.desc
+        };
+        addToCartFromMenu(item);
+      });
+    });
+
+    // Reveal hero text on load for a nice effect
+  </script>
+  <script>window.addEventListener('load', () => document.body.classList.remove('opacity-0'));</script>
+</body>
+</html>
