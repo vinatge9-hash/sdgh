@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Brew Haven - About</title>
+  <meta name="description" content="Learn about Brew Haven's passion for quality coffee and community." />
+  <!-- fonts placeholder -->
+  <!-- font-preload: 'Playfair Display', 'Inter' -->
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="opacity-0 transition-opacity duration-1000 ease-in-out" style="font-family: 'Inter', sans-serif;">
+  <header class="w-full fixed top-0 left-0 z-50 bg-white/70 backdrop-blur-lg shadow-md">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <a href="./index.html" class="flex items-center space-x-2 text-slate-800 font-semibold text-xl">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-amber-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h9a4 4 0 0 1 4 4v3" /><path d="M7 3v6" /><path d="M3 11h13" /><path d="M8 21h9" /><path d="M3 7h6"/></svg>
+          Brew Haven
+        </a>
+        <nav class="hidden md:flex space-x-6 text-slate-700" aria-label="Main Navigation">
+          <a href="./index.html" class="hover:underline">Home</a>
+          <a href="./menu.html" class="hover:underline">Menu</a>
+          <a href="./about.html" class="hover:underline">About</a>
+          <a href="./contact.html" class="hover:underline">Contact</a>
+          <a href="./cart.html" class="hover:underline">Cart</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="pt-20 px-6 md:px-12 max-w-7xl mx-auto" style="font-family: 'Inter', sans-serif;">
+    <section class="py-12 animate-on-scroll" style="opacity:0;">
+      <div class="grid md:grid-cols-2 gap-8 items-center">
+        <div>
+          <h1 class="text-4xl md:text-5xl font-bold mb-4" style="font-family: 'Playfair Display', serif;">Our Passion for Quality</h1>
+          <p class="text-slate-700">Brew Haven grew from a simple idea: to celebrate the craft of coffee with care, precision, and kindness. We source beans from small farmers, roast to bring out nuanced flavors, and craft drinks that invite people to slow down and savor.</p>
+        </div>
+        <div>
+          <img src="https://images.pexels.com/photos/11896535/pexels-photo-11896535.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" alt="Barista making latte art" class="w-full rounded-xl shadow-md"/>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-8 animate-on-scroll" style="opacity:0;">
+      <div class="grid md:grid-cols-3 gap-6">
+        <article class="bg-white rounded-xl p-5 shadow-md">
+          <h3 class="font-semibold mb-2" style="font-family: 'Playfair Display', serif;">Sourcing</h3>
+          <p class="text-slate-700 text-sm">We partner with farmers who practice sustainable farming and fair wages.</p>
+        </article>
+        <article class="bg-white rounded-xl p-5 shadow-md">
+          <h3 class="font-semibold mb-2" style="font-family: 'Playfair Display', serif;">Roasting</h3>
+          <p class="text-slate-700 text-sm">Small-batch roasting to unlock balanced, vibrant flavors.</p>
+        </article>
+        <article class="bg-white rounded-xl p-5 shadow-md">
+          <h3 class="font-semibold mb-2" style="font-family: 'Playfair Display', serif;">Community</h3>
+          <p class="text-slate-700 text-sm">A space for neighbors to connect, collaborate, and unwind.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="w-full bg-slate-900 text-white py-6 mt-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-sm flex flex-col md:flex-row justify-between items-center gap-2">
+      <span>© 2025 Brew Haven</span>
+      <span>Handcrafted with care in Hyderabad</span>
+    </div>
+  </footer>
+
+  <script>
+    const mobileBtn = document.getElementById('mobile-menu-button');
+    // (No mobile menu here, but keep the hook if needed)
+    window.addEventListener('load', () => document.body.classList.remove('opacity-0'));
+    const animatedElements = document.querySelectorAll('.animate-on-scroll');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => { if (entry.isIntersecting) { entry.target.style.opacity = '1'; observer.unobserve(entry.target); } });
+    }, { threshold: 0.1 });
+    animatedElements.forEach(el => { el.style.opacity = '0'; el.classList.add('transition-opacity','duration-1000','ease-in-out'); observer.observe(el); });
+  </script>
+  <script>window.addEventListener('load', () => document.body.classList.remove('opacity-0'));</script>
+</body>
+</html>
